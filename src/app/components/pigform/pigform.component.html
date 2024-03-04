@@ -1,0 +1,53 @@
+<form [formGroup]="pigForm" (ngSubmit)="onSubmit()" class="form">
+  <mat-form-field>
+    <mat-label>Brinco do Animal</mat-label>
+    <input matInput type="number" formControlName="animalTag" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Brinco do Pai</mat-label>
+    <input matInput type="number" formControlName="paiTag" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Brinco da Mãe</mat-label>
+    <input matInput type="number" formControlName="maeTag" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Data de Nascimento</mat-label>
+    <input matInput type="number" formControlName="birthDate" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Data de Saída</mat-label>
+    <input matInput type="number" formControlName="departureDate" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let opcao of statusOptions" [value]="opcao">
+        {{ opcao }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Sexo</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let opcao of sexOptions" [value]="opcao">
+        {{ opcao }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br /><br />
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    (click)="submitForm()"
+  >
+    Salvar
+  </button>
+</form>

@@ -1,53 +1,68 @@
-<form [formGroup]="pigForm" (ngSubmit)="onSubmit()" class="form">
-  <mat-form-field>
-    <mat-label>Brinco do Animal</mat-label>
-    <input matInput type="number" formControlName="animalTag" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Brinco do Pai</mat-label>
-    <input matInput type="number" formControlName="paiTag" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Brinco da Mãe</mat-label>
-    <input matInput type="number" formControlName="maeTag" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Data de Nascimento</mat-label>
-    <input matInput type="number" formControlName="birthDate" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Data de Saída</mat-label>
-    <input matInput type="number" formControlName="departureDate" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Status</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let opcao of statusOptions" [value]="opcao">
-        {{ opcao }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Sexo</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let opcao of sexOptions" [value]="opcao">
-        {{ opcao }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br /><br />
-  <button
-    type="submit"
-    mat-raised-button
-    color="primary"
-    (click)="submitForm()"
-  >
-    Salvar
-  </button>
-</form>
+<h1 mat-dialog-title>{{ data.action === 'edit' ? 'Editar Suíno' : 'Adicionar Suíno' }}</h1>
+<div class="form-container">
+  <form [formGroup]="pigForm" class="form">
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Brinco do Animal</mat-label>
+        <input matInput formControlName="animalTag">
+        <mat-error *ngIf="pigForm.get('animalTag')?.hasError('pattern')">O brinco deve ser um número</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Brinco do Pai</mat-label>
+        <input matInput formControlName="fatherTag">
+        <mat-error *ngIf="pigForm.get('fatherTag')?.hasError('pattern')">O brinco deve ser um número</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Brinco da Mãe</mat-label>
+        <input matInput formControlName="motherTag">
+        <mat-error *ngIf="pigForm.get('motherTag')?.hasError('pattern')">O brinco deve ser um número</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="isBirthDateValid()">Selecione a data de nascimento</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Data de Saída</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="departureDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="isDepartureDateValid()">Selecione a data de saída</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let opcao of statusOptions" [value]="opcao">
+            {{ opcao }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Sexo</mat-label>
+        <mat-select formControlName="sex">
+          <mat-option *ngFor="let opcao of sexOptions" [value]="opcao">
+            {{ opcao }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <button mat-raised-button color="basic" (click)="onCancelClick()">Cancelar</button>
+      <button mat-raised-button color="primary" (click)="onSaveClick()" [disabled]="pigForm.invalid">Salvar</button>
+    </div>
+  </form>
+</div>

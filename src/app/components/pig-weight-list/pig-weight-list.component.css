@@ -1,0 +1,30 @@
+.page-container {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.no-data-found {
+    padding: 10px;
+    text-align: center;
+    color: #777;
+}
+
+.button-container {
+    margin-bottom: 20px;
+    /* Espaçamento de 20px entre o botão e a tabela */
+}
+
+
+
+/*:host {
+    display: block;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+*/

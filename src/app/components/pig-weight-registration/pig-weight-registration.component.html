@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>{{ data.action === 'edit' ? 'Editar Peso' : 'Cadastrar Peso' }}</h1>
+<div class="form-container">
+    <form [formGroup]="weightForm">
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Selecione o Suíno</mat-label>
+                <mat-select formControlName="animalTag">
+                    <mat-option *ngFor="let suino of suinos" [value]="suino.animalTag">{{ suino.animalTag
+                        }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="isAnimalTagValid()">Escolha um número de brinco do suíno</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" formControlName="weighingDate" placeholder="Data da Pesagem">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="isWeighingDateValid()">Selecione a data da pesagem</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <input matInput formControlName="weight" placeholder="Peso em Kg" type="number">
+                <mat-error *ngIf="isWeightValid()">Preencha o peso corretamente</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="basic" (click)="onCancelClick()">Cancelar</button>
+            <button mat-raised-button color="primary" (click)="onSaveClick()"
+                [disabled]="weightForm.invalid">Salvar</button>
+        </div>
+    </form>
+
+</div>

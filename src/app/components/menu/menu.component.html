@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" *ngIf="!isLoginPage">
+  <span class="title">SuinoTech</span>
+  <button mat-button [matMenuTriggerFor]="menu">Suinos</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/">Listagem</button>
+    <button mat-menu-item routerLink="/pesos">Controle de peso</button>
+  </mat-menu>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="onLogout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>

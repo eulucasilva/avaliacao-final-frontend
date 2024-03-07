@@ -1,0 +1,8 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+/* Adiciona espaçamento entre o título e o menu "Suinos" */
+.title {
+    margin-right: 30px;
+}

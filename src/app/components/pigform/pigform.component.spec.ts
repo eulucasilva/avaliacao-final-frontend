@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PigformComponent } from './pigform.component';
+
+
 
 describe('PigformComponent', () => {
   let component: PigformComponent;
@@ -10,8 +11,8 @@ describe('PigformComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PigformComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(PigformComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

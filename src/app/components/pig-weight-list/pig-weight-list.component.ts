@@ -15,10 +15,14 @@ export class PigWeightListComponent implements OnInit {
 
   weights: IWeight[] = [];
   displayedColumns: string[] = ['animalTag', 'weighingDate', 'weight', 'actions'];
+  isLoading = true;
 
   constructor(private weightService: WeightService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
     this.loadWeights();
     this.weightService.getWeightListUpdated().subscribe(() => {
       this.loadWeights();

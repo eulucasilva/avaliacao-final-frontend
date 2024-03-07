@@ -1,4 +1,4 @@
-<div class="page-container">
+<div class="page-container" *ngIf="!isLoading">
     <div class="header">
         <h2>Listagem de Suínos</h2>
         <div class="button-container">
@@ -57,7 +57,6 @@
                 </button> --->
             </td>
         </ng-container>
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
@@ -65,3 +64,7 @@
         <div class="no-data-found">Nenhum suíno encontrado.</div>
     </ng-container>
 </div>
+<mat-card-content class="container" *ngIf="isLoading"
+    style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <mat-spinner diameter="50"></mat-spinner>
+</mat-card-content>

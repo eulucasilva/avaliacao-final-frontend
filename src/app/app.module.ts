@@ -20,7 +20,6 @@ import { PiglistComponent } from './components/piglist/piglist.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AgePipe } from './pipes/age.pipe';
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
 import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PigWeightRegistrationComponent } from './components/pig-weight-registration/pig-weight-registration.component';
@@ -32,6 +31,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { AutenticaInterceptor } from './components/authentication/autentica.interceptor';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDsQ3qopbdrlAcmRZWxll7jmu4thTmWgME",
@@ -80,8 +80,7 @@ const app = initializeApp(firebaseConfig);
     MatSnackBarModule,
     MatMenuModule,
     MatTooltipModule,
-    MatProgressSpinnerModule
-
+    MatProgressSpinnerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AutenticaInterceptor, multi: true },

@@ -16,10 +16,14 @@ export class PiglistComponent implements OnInit {
 
   displayedColumns: string[] = ['animalTag', 'fatherTag', 'motherTag', 'birthDate', 'departureDate', 'status', 'sex', 'actions'];
   suinos: ISuino[] = [];
+  isLoading: boolean = true
 
   constructor(private suinoService: PigService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
     this.loadPigs();
     this.suinoService.getPigListUpdated().subscribe(() => {
       this.loadPigs();

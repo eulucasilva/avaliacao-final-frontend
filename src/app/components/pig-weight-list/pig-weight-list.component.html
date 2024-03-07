@@ -1,4 +1,4 @@
-<div class="page-container">
+<div class="page-container" *ngIf="!isLoading">
   <div class="header">
     <h2>Listagem de Pesos</h2>
     <div class="button-container">
@@ -40,3 +40,7 @@
     <div class="no-data-found">Nenhum peso encontrado.</div>
   </ng-container>
 </div>
+<mat-card-content class="container" *ngIf="isLoading"
+  style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <mat-spinner diameter="50"></mat-spinner>
+</mat-card-content>

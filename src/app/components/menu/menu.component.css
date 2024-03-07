@@ -6,3 +6,12 @@
 .title {
     margin-right: 30px;
 }
+
+.logo {
+    width: 120px;
+    /* ajuste o tamanho conforme necessário */
+    height: 60px;
+    /* ajuste o tamanho conforme necessário */
+    margin-right: 10px;
+    /* ajuste o espaçamento à direita conforme necessário */
+}

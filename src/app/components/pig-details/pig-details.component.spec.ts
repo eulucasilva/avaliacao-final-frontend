@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PiglistComponent } from './piglist.component';
+import { PigDetailsComponent } from './pig-details.component';
 
-describe('PiglistComponent', () => {
-  let component: PiglistComponent;
-  let fixture: ComponentFixture<PiglistComponent>;
+describe('PigDetailsComponent', () => {
+  let component: PigDetailsComponent;
+  let fixture: ComponentFixture<PigDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PiglistComponent]
+      declarations: [PigDetailsComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PiglistComponent);
+    fixture = TestBed.createComponent(PigDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -9,10 +9,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pigform',
-  templateUrl: './pigform.component.html',
-  styleUrl: './pigform.component.css',
+  templateUrl: './pig-form.component.html',
+  styleUrl: './pig-form.component.css',
 })
-export class PigformComponent implements OnInit {
+export class PigFormComponent implements OnInit {
   pigForm: FormGroup;
   statusOptions: string[] = ['Ativo', 'Vendido', 'Morto'];
   sexOptions: string[] = ['Macho', 'Fêmea'];
@@ -21,7 +21,7 @@ export class PigformComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private suinoService: PigService,
     @Inject(MAT_DIALOG_DATA) public data: { action: string, pig: ISuino, pigIndex: number },
-    private dialogRef: MatDialogRef<PigformComponent>, private snackBar: MatSnackBar) {
+    private dialogRef: MatDialogRef<PigFormComponent>, private snackBar: MatSnackBar) {
     this.pigForm = this.fb.group({
       animalTag: [data.pig?.animalTag || '', [Validators.required, Validators.pattern('^[0-9]*$')]],
       fatherTag: [data.pig?.fatherTag || '', [Validators.required, Validators.pattern('^[0-9]*$')]],

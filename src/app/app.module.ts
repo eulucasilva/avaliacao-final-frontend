@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PigformComponent } from './components/pigform/pigform.component';
+import { PigFormComponent } from './components/pig-form/pig-form.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,7 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PiglistComponent } from './components/piglist/piglist.component';
+import { PigListComponent } from './components/pig-list/pig-list.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AgePipe } from './pipes/age.pipe';
 import { initializeApp } from "firebase/app";
@@ -33,6 +33,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { AutenticaInterceptor } from './components/authentication/autentica.interceptor';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PigDetailsComponent } from './components/pig-details/pig-details.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 const firebaseConfig = {
@@ -51,8 +53,8 @@ const app = initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     AppComponent,
-    PigformComponent,
-    PiglistComponent,
+    PigFormComponent,
+    PigListComponent,
     AgePipe,
     DeleteConfirmationComponent,
     PigWeightRegistrationComponent,
@@ -61,6 +63,7 @@ const app = initializeApp(firebaseConfig);
     AuthenticationComponent,
     LoadingSpinnerComponent,
     PageNotFoundComponent,
+    PigDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,8 @@ const app = initializeApp(firebaseConfig);
     MatMenuModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatDividerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AutenticaInterceptor, multi: true },

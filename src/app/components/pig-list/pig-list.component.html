@@ -14,7 +14,6 @@
             <input matInput class="small-placeholder" (keyup)="applyFilter($any($event.target).value, 'animalTag')"
                 placeholder="Brinco">
         </mat-form-field>
-
         <mat-form-field class="filter-field">
             <mat-label>Filtrar por Brinco do Pai</mat-label>
             <input matInput class="small-placeholder" (keyup)="applyFilter($any($event.target).value, 'fatherTag')"
@@ -69,7 +68,7 @@
             <td mat-cell *matCellDef="let suino"> {{ suino.motherTag }} </td>
         </ng-container>
         <ng-container matColumnDef="birthDate">
-            <th mat-header-cell *matHeaderCellDef> Data de Nascimento </th>
+            <th mat-header-cell *matHeaderCellDef> Idade </th>
             <td mat-cell *matCellDef="let suino"> {{ suino.birthDate | age }} </td>
         </ng-container>
         <ng-container matColumnDef="departureDate">
@@ -93,9 +92,9 @@
                 <button mat-icon-button matTooltip="Excluir" (click)="openDeleteConfirmation(suino.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
-                <!---  <button mat-icon-button>
+                <button mat-icon-button matTooltip="Detalhes" (click)="openDetails(suino.id)">
                     <mat-icon>visibility</mat-icon>
-                </button> --->
+                </button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

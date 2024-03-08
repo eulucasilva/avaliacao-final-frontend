@@ -16,7 +16,9 @@ export class PiglistComponent implements OnInit {
 
   displayedColumns: string[] = ['animalTag', 'fatherTag', 'motherTag', 'birthDate', 'departureDate', 'status', 'sex', 'actions'];
   suinos: ISuino[] = [];
-  isLoading: boolean = true
+  filteredSuinos: ISuino[] = [];
+  isLoading: boolean = true;
+  dataSource!: MatTableDataSource<ISuino>
 
   constructor(private suinoService: PigService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
@@ -36,6 +38,8 @@ export class PiglistComponent implements OnInit {
         const pigsArray = Object.values(pigs);
         console.log(pigsArray);
         this.suinos = pigsArray;
+        this.filteredSuinos = pigsArray;
+        this.dataSource = new MatTableDataSource<ISuino>(this.filteredSuinos);
       } else {
         console.log('Nenhum suíno encontrado.');
       }
@@ -90,5 +94,41 @@ export class PiglistComponent implements OnInit {
       duration: 3000, // 3 segundos
     });
   }
+
+  calculateAgeInMonths(birthDate: string): number {
+    const today = new Date();
+    const birth = new Date(birthDate);
+    let age = today.getMonth() - birth.getMonth() + (12 * (today.getFullYear() - birth.getFullYear()));
+    if (today.getDate() < birth.getDate()) {
+      age--;
+    }
+    return age;
+  }
+
+
+  applyFilter(value: string, column: string): void {
+    if (!value) {
+      this.filteredSuinos = this.suinos;
+    } else {
+      this.filteredSuinos = this.suinos.filter(suino => {
+        if (column === 'birthDate') {
+          const ageInMonths = this.calculateAgeInMonths(suino[column]);
+          return ageInMonths.toString().includes(value.toLowerCase());
+        } else {
+          const columnKey = column as keyof ISuino;
+          const suinoValue = suino[columnKey];
+          if (suinoValue !== undefined && suinoValue !== null) {
+            const suinoValueString = suinoValue.toString().toLowerCase();
+            return suinoValueString.includes(value.toLowerCase());
+          }
+          return false;
+        }
+      });
+    }
+
+    this.dataSource = new MatTableDataSource<ISuino>(this.filteredSuinos);
+  }
+
+
 
 }

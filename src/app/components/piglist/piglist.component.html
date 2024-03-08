@@ -8,13 +8,54 @@
             </button>
         </div>
     </div>
-    <!---<div class="filters">
-        <mat-form-field>
+    <div class="filters">
+        <mat-form-field class="filter-field">
             <mat-label>Filtrar por Brinco</mat-label>
-            <input matInput (change)="applyFilter($event.target.value)" placeholder="Brinco">
+            <input matInput class="small-placeholder" (keyup)="applyFilter($any($event.target).value, 'animalTag')"
+                placeholder="Brinco">
         </mat-form-field>
-    </div>--->
-    <table mat-table [dataSource]="suinos" class="mat-elevation-z8">
+
+        <mat-form-field class="filter-field">
+            <mat-label>Filtrar por Brinco do Pai</mat-label>
+            <input matInput class="small-placeholder" (keyup)="applyFilter($any($event.target).value, 'fatherTag')"
+                placeholder="Brinco do Pai">
+        </mat-form-field>
+
+        <mat-form-field class="filter-field">
+            <mat-label>Filtrar por Brinco da Mãe</mat-label>
+            <input matInput class="small-placeholder" (keyup)="applyFilter($any($event.target).value, 'motherTag')"
+                placeholder="Brinco da Mãe">
+        </mat-form-field>
+
+        <mat-form-field class="filter-field">
+            <mat-label>Filtrar por Data de Nascimento</mat-label>
+            <input matInput class="small-placeholder" (keyup)="applyFilter($any($event.target).value, 'birthDate')"
+                placeholder="Data de Nascimento">
+        </mat-form-field>
+
+        <mat-form-field class="filter-field">
+            <mat-label>Filtrar por Data de Saída</mat-label>
+            <input matInput class="small-placeholder" (keyup)="applyFilter($any($event.target).value, 'departureDate')"
+                placeholder="Data de Saída">
+        </mat-form-field>
+        <mat-form-field class="filter-field">
+            <mat-label>Filtrar por Status</mat-label>
+            <mat-select (selectionChange)="applyFilter($event.value, 'status')" placeholder="Status">
+                <mat-option value="Ativo">Ativo</mat-option>
+                <mat-option value="Vendido">Vendido</mat-option>
+                <mat-option value="Morto">Morto</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="filter-field">
+            <mat-label>Filtrar por Sexo</mat-label>
+            <mat-select (selectionChange)="applyFilter($event.value, 'sex')" placeholder="Sexo">
+                <mat-option value="Macho">M</mat-option>
+                <mat-option value="Fêmea">F</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="animalTag">
             <th mat-header-cell *matHeaderCellDef> Brinco </th>
             <td mat-cell *matCellDef="let suino"> {{ suino.animalTag }} </td>

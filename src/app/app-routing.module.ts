@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PigWeightRegistrationComponent } from './components/pig-weight-registration/pig-weight-registration.component';
-import { PiglistComponent } from './components/piglist/piglist.component';
+import { PigListComponent } from './components/pig-list/pig-list.component';
 import { PigWeightListComponent } from './components/pig-weight-list/pig-weight-list.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { authGuard } from './services/guards/auth.guard';
@@ -10,7 +9,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 const routes: Routes = [
   { path: '', redirectTo: '/suinos', pathMatch: 'full', },
-  { path: 'suinos', component: PiglistComponent, canActivate: [authGuard] },
+  { path: 'suinos', component: PigListComponent, canActivate: [authGuard] },
   { path: 'pesos', component: PigWeightListComponent, canActivate: [authGuard] },
   { path: 'login', component: AuthenticationComponent },
   { path: '**', component: PageNotFoundComponent }

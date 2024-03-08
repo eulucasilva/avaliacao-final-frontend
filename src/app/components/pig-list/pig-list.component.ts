@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { PigService } from '../../services/pig.service';
 import { ISuino } from '../../models/pig';
 import { MatDialog } from '@angular/material/dialog';
-import { PigformComponent } from '../pigform/pigform.component';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableDataSource } from '@angular/material/table';
+import { PigFormComponent } from '../pig-form/pig-form.component';
+import { PigDetailsComponent } from '../pig-details/pig-details.component';
 
 @Component({
   selector: 'app-piglist',
-  templateUrl: './piglist.component.html',
-  styleUrl: './piglist.component.css'
+  templateUrl: './pig-list.component.html',
+  styleUrl: './pig-list.component.css'
 })
-export class PiglistComponent implements OnInit {
+export class PigListComponent implements OnInit {
 
   displayedColumns: string[] = ['animalTag', 'fatherTag', 'motherTag', 'birthDate', 'departureDate', 'status', 'sex', 'actions'];
   suinos: ISuino[] = [];
-  isLoading: boolean = true
+  isLoading: boolean = true;
 
   constructor(private suinoService: PigService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
@@ -43,7 +43,7 @@ export class PiglistComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(PigformComponent, {
+    const dialogRef = this.dialog.open(PigFormComponent, {
       width: '800px',
       data: {}
     });
@@ -57,7 +57,7 @@ export class PiglistComponent implements OnInit {
     const suino = this.suinos.find(s => s.id === pigId);
     if (suino) {
       const pigIndex = this.suinos.indexOf(suino);
-      const dialogRef = this.dialog.open(PigformComponent, {
+      const dialogRef = this.dialog.open(PigFormComponent, {
         width: '800px',
         data: { action: 'edit', pigIndex: pigIndex, pig: suino }
       });
@@ -68,13 +68,34 @@ export class PiglistComponent implements OnInit {
     }
   }
 
-  openDeleteConfirmation(id: string): void {
-    const dialogRef = this.dialog.open(DeleteConfirmationComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.deletePig(id);
-      }
-    });
+  openDeleteConfirmation(pigId: string): void {
+    const suino = this.suinos.find(s => s.id === pigId);
+    if (suino) {
+      const pigIndex = this.suinos.indexOf(suino);
+      const dialogRef = this.dialog.open(PigFormComponent, {
+        width: '800px',
+        data: { pigIndex: pigIndex, pig: suino }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        //console.log('Modal fechado');
+      });
+    }
+  }
+
+  openDetails(pigId: string): void {
+    const suino = this.suinos.find(s => s.id === pigId);
+    if (suino) {
+      const pigIndex = this.suinos.indexOf(suino);
+      const dialogRef = this.dialog.open(PigDetailsComponent, {
+        width: '600px',
+        data: { pigIndex: pigIndex, pig: suino }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        //console.log('Modal fechado');
+      });
+    }
   }
 
   deletePig(id: string): void {

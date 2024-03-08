@@ -16,8 +16,13 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  get isLoginPage(): boolean {
-    return this.router.url === '/login';
+  get showMenu(): boolean {
+    return this.authService.isLoggedIn() && this.isValidRoute();
+  }
+
+  private isValidRoute(): boolean {
+    const validRoutes = ['/', '/suinos', '/pesos'];
+    return validRoutes.includes(this.router.url);
   }
 
   onLogout() {

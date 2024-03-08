@@ -32,6 +32,7 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { AutenticaInterceptor } from './components/authentication/autentica.interceptor';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 const firebaseConfig = {
@@ -59,6 +60,7 @@ const app = initializeApp(firebaseConfig);
     PigWeightListComponent,
     AuthenticationComponent,
     LoadingSpinnerComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

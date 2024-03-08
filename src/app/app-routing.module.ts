@@ -5,13 +5,15 @@ import { PiglistComponent } from './components/piglist/piglist.component';
 import { PigWeightListComponent } from './components/pig-weight-list/pig-weight-list.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { authGuard } from './services/guards/auth.guard';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/suinos', pathMatch: 'full', },
   { path: 'suinos', component: PiglistComponent, canActivate: [authGuard] },
   { path: 'pesos', component: PigWeightListComponent, canActivate: [authGuard] },
-  { path: 'login', component: AuthenticationComponent }
+  { path: 'login', component: AuthenticationComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

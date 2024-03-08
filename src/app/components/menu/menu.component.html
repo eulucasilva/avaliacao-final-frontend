@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" *ngIf="!isLoginPage">
+<mat-toolbar color="primary" *ngIf="showMenu">
   <img src="../../../assets/logo-branco.png" alt="Logo" class="logo">
   <button mat-button [matMenuTriggerFor]="menu">Suinos</button>
   <mat-menu #menu="matMenu">

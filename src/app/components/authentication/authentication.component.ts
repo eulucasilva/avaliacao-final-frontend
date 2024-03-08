@@ -60,15 +60,6 @@ export class AuthenticationComponent implements OnInit {
     );
   }
 
-  toRegister() {
-    // Sua lógica para redirecionar para a tela de registro
-
-  }
-
-  goBackToLogin() {
-    // Sua lógica para voltar para a tela de login
-
-  }
 
   redirectToRegister(): void {
     this.isLogin = !this.isLogin;

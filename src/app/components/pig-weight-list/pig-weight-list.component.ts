@@ -44,11 +44,11 @@ export class PigWeightListComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(PigWeightRegistrationComponent, {
       width: '800px',
-      data: {}
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Modal fechado');
+      //console.log('Modal fechado');
     });
   }
 
@@ -62,7 +62,7 @@ export class PigWeightListComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        console.log('Modal fechado');
+        //console.log('Modal fechado');
       });
     }
   }

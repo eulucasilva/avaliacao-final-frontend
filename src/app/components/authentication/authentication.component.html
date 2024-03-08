@@ -31,10 +31,10 @@
       </mat-card-content>
     </form>
     <mat-card-actions align="end" class="button-container">
-      <button mat-raised-button color="basic" class="full" align="end" (click)="redirectToRegister()"
-        *ngIf="isLogin">Não tem uma
-        conta?
-        Registra-se</button>
+      <button mat-raised-button color="basic" class="full" align="end"
+        (click)="isLogin ? redirectToRegister() : redirectToLogin()">
+        {{ registerButtonText }}
+      </button>
       <button mat-raised-button color="primary" class="full" align="end" (click)="isLogin ? login() : register()"
         [class.align-right]="!isLogin" [disabled]="!loginForm.valid">{{
         isLogin ? 'Entrar' :

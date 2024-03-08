@@ -16,6 +16,8 @@ export class AuthenticationComponent implements OnInit {
   isLoading = false;
   error: string = '';
   isError: boolean = false;
+  public registerButtonText: string = 'Não tem uma conta? Registra-se';
+
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
 
@@ -58,8 +60,24 @@ export class AuthenticationComponent implements OnInit {
     );
   }
 
+  toRegister() {
+    // Sua lógica para redirecionar para a tela de registro
+
+  }
+
+  goBackToLogin() {
+    // Sua lógica para voltar para a tela de login
+
+  }
+
   redirectToRegister(): void {
     this.isLogin = !this.isLogin;
+    this.registerButtonText = 'Voltar para login';
+  }
+
+  redirectToLogin(): void {
+    this.isLogin = !this.isLogin;
+    this.registerButtonText = 'Não tem uma conta? Registra-se';
   }
 
   login(): void {

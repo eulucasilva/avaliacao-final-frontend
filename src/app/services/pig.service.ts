@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, map } from 'rxjs';
+import { Observable, Subject, map, tap } from 'rxjs';
 import { ISuino } from '../models/pig';
 
 @Injectable({
@@ -23,10 +23,14 @@ export class PigService {
 
 
   addPig(pigData: ISuino): Observable<any> {
-    return this.http.post<any>(this.apiURL, pigData);
+    return this.http.post<any>(this.apiURL, pigData).pipe(
+      tap(() => {
+        this.emitPigListUpdate();
+      })
+    );
   }
 
-  // Obter todos os suínos
+
   getAllPigs(): Observable<ISuino[]> {
     return this.http.get<any[]>(this.apiURL).pipe(
       map((response) => {
@@ -44,16 +48,28 @@ export class PigService {
 
 
   updatePig(id: string, pigData: ISuino): Observable<any> {
-    return this.http.put<ISuino>(`${this.apiURL.replace('.json', '')}/${id}.json`, pigData);
+    return this.http.put<ISuino>(`${this.apiURL.replace('.json', '')}/${id}.json`, pigData).pipe(
+      tap(() => {
+        this.emitPigListUpdate();
+      })
+    );
   }
 
 
   deletePig(id: string): Observable<any> {
-    return this.http.delete<ISuino>(`${this.apiURL.replace('.json', '')}/${id}.json`);
+    return this.http.delete<ISuino>(`${this.apiURL.replace('.json', '')}/${id}.json`).pipe(
+      tap(() => {
+        this.emitPigListUpdate();
+      })
+    );
   }
 
   loadPig(id: string): Observable<ISuino> {
-    return this.http.get<ISuino>(`${this.apiURL}/${id}.json`);
+    return this.http.get<ISuino>(`${this.apiURL}/${id}.json`).pipe(
+      tap(() => {
+        this.emitPigListUpdate();
+      })
+    );
   }
 
 }

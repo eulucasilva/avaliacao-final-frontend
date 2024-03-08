@@ -31,6 +31,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { AutenticaInterceptor } from './components/authentication/autentica.interceptor';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 const firebaseConfig = {
@@ -57,7 +58,7 @@ const app = initializeApp(firebaseConfig);
     MenuComponent,
     PigWeightListComponent,
     AuthenticationComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +82,7 @@ const app = initializeApp(firebaseConfig);
     MatMenuModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    MatMomentDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AutenticaInterceptor, multi: true },

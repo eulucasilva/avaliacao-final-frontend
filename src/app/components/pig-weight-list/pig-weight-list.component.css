@@ -16,15 +16,4 @@
 
 .button-container {
     margin-bottom: 20px;
-    /* Espaçamento de 20px entre o botão e a tabela */
 }
-
-
-
-/*:host {
-    display: block;
-    overflow-y: auto;
-    max-height: 80vh;
-}
-
-*/

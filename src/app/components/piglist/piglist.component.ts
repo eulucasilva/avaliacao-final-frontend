@@ -33,7 +33,7 @@ export class PiglistComponent implements OnInit {
   loadPigs(): void {
     this.suinoService.getAllPigs().subscribe(pigs => {
       if (pigs) {
-        const pigsArray = Object.values(pigs); // Convertendo o objeto para um array de valores
+        const pigsArray = Object.values(pigs);
         console.log(pigsArray);
         this.suinos = pigsArray;
       } else {

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, map } from 'rxjs';
+import { Observable, Subject, map, tap } from 'rxjs';
 import { IWeight } from '../models/weight';
+import { format } from 'date-fns';
 
 @Injectable({
   providedIn: 'root'
@@ -38,20 +39,37 @@ export class WeightService {
     );
   }
 
+
   addWeight(weightData: IWeight): Observable<any> {
-    return this.http.post<any>(this.apiURL, weightData);
+    return this.http.post<any>(this.apiURL, weightData).pipe(
+      tap(() => {
+        this.emitWeightListUpdate();
+      })
+    );
   }
 
   updateWeight(id: string, weightData: IWeight): Observable<any> {
-    return this.http.put<IWeight>(`${this.apiURL.replace('.json', '')}/${id}.json`, weightData);
+    return this.http.put<IWeight>(`${this.apiURL.replace('.json', '')}/${id}.json`, weightData).pipe(
+      tap(() => {
+        this.emitWeightListUpdate();
+      })
+    );
   }
 
 
   deleteWeight(id: string): Observable<any> {
-    return this.http.delete<IWeight>(`${this.apiURL.replace('.json', '')}/${id}.json`);
+    return this.http.delete<IWeight>(`${this.apiURL.replace('.json', '')}/${id}.json`).pipe(
+      tap(() => {
+        this.emitWeightListUpdate();
+      })
+    );
   }
 
   loadWeight(id: string): Observable<IWeight> {
-    return this.http.get<IWeight>(`${this.apiURL}/${id}.json`);
+    return this.http.get<IWeight>(`${this.apiURL}/${id}.json`).pipe(
+      tap(() => {
+        this.emitWeightListUpdate();
+      })
+    );
   }
 }

@@ -5,6 +5,7 @@
       <mat-form-field>
         <mat-label>Brinco do Animal</mat-label>
         <input matInput formControlName="animalTag">
+        <mat-error *ngIf="pigForm.get('animalTag')?.hasError('required')">Campo obrigatório</mat-error>
         <mat-error *ngIf="pigForm.get('animalTag')?.hasError('pattern')">O brinco deve ser um número</mat-error>
       </mat-form-field>
     </div>
@@ -12,6 +13,7 @@
       <mat-form-field>
         <mat-label>Brinco do Pai</mat-label>
         <input matInput formControlName="fatherTag">
+        <mat-error *ngIf="pigForm.get('fatherTag')?.hasError('required')">Campo obrigatório</mat-error>
         <mat-error *ngIf="pigForm.get('fatherTag')?.hasError('pattern')">O brinco deve ser um número</mat-error>
       </mat-form-field>
     </div>
@@ -19,6 +21,7 @@
       <mat-form-field>
         <mat-label>Brinco da Mãe</mat-label>
         <input matInput formControlName="motherTag">
+        <mat-error *ngIf="pigForm.get('motherTag')?.hasError('required')">Campo obrigatório</mat-error>
         <mat-error *ngIf="pigForm.get('motherTag')?.hasError('pattern')">O brinco deve ser um número</mat-error>
       </mat-form-field>
     </div>
@@ -28,7 +31,6 @@
         <input matInput [matDatepicker]="picker" formControlName="birthDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="isBirthDateValid()">Selecione a data de nascimento</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -37,7 +39,6 @@
         <input matInput [matDatepicker]="picker2" formControlName="departureDate">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
-        <mat-error *ngIf="isDepartureDateValid()">Selecione a data de saída</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -48,6 +49,7 @@
             {{ opcao }}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="pigForm.get('status')?.hasError('required')">Campo obrigatório</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -58,6 +60,7 @@
             {{ opcao }}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="pigForm.get('sex')?.hasError('required')">Campo obrigatório</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">

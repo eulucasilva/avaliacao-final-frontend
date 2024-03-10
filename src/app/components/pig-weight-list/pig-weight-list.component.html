@@ -10,20 +10,21 @@
   </div>
   <table mat-table [dataSource]="weights" class="mat-elevation-z8">
     <ng-container matColumnDef="animalTag">
-      <th mat-header-cell *matHeaderCellDef>Brinco</th>
-      <td mat-cell *matCellDef="let weight">{{ weight.animalTag }}</td>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Brinco</th>
+      <td mat-cell *matCellDef="let weight" style="text-align: center;">{{ weight.animalTag }}</td>
     </ng-container>
     <ng-container matColumnDef="weighingDate">
-      <th mat-header-cell *matHeaderCellDef>Data da Pesagem</th>
-      <td mat-cell *matCellDef="let weight">{{ weight.weighingDate | date:'dd/MM/yyyy'}}</td>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Data da Pesagem</th>
+      <td mat-cell *matCellDef="let weight" style="text-align: center;">{{ weight.weighingDate | date:'dd/MM/yyyy'}}
+      </td>
     </ng-container>
     <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef>Peso (Kg)</th>
-      <td mat-cell *matCellDef="let weight">{{ weight.weight }}</td>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Peso (Kg)</th>
+      <td mat-cell *matCellDef="let weight" style="text-align: center;">{{ weight.weight }}</td>
     </ng-container>
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Ações</th>
-      <td mat-cell *matCellDef="let weight">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Ações</th>
+      <td mat-cell *matCellDef="let weight" style="text-align: center;">
         <button mat-icon-button matTooltip="Editar" (click)="openEditDialog(weight.id)">
           <mat-icon>edit</mat-icon>
         </button>

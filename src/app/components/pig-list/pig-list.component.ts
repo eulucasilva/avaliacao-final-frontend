@@ -20,6 +20,9 @@ export class PigListComponent implements OnInit {
   filteredSuinos: ISuino[] = [];
   isLoading: boolean = true;
   dataSource!: MatTableDataSource<ISuino>
+  statusFilter: string = 'Todos';
+  sexFilter: string = 'Todos';
+
 
   constructor(private suinoService: PigService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
@@ -37,7 +40,6 @@ export class PigListComponent implements OnInit {
     this.suinoService.getAllPigs().subscribe(pigs => {
       if (pigs) {
         const pigsArray = Object.values(pigs);
-        console.log(pigsArray);
         this.suinos = pigsArray;
         this.filteredSuinos = pigsArray;
         this.dataSource = new MatTableDataSource<ISuino>(this.filteredSuinos);
@@ -73,19 +75,13 @@ export class PigListComponent implements OnInit {
     }
   }
 
-  openDeleteConfirmation(pigId: string): void {
-    const suino = this.suinos.find(s => s.id === pigId);
-    if (suino) {
-      const pigIndex = this.suinos.indexOf(suino);
-      const dialogRef = this.dialog.open(PigFormComponent, {
-        width: '800px',
-        data: { pigIndex: pigIndex, pig: suino }
-      });
-
-      dialogRef.afterClosed().subscribe(result => {
-        //console.log('Modal fechado');
-      });
-    }
+  openDeleteConfirmation(id: string): void {
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deletePig(id);
+      }
+    });
   }
 
   openDetails(pigId: string): void {
@@ -129,7 +125,7 @@ export class PigListComponent implements OnInit {
 
 
   applyFilter(value: string, column: string): void {
-    if (!value) {
+    if (!value || value.toLowerCase() === 'todos') {
       this.filteredSuinos = this.suinos;
     } else {
       this.filteredSuinos = this.suinos.filter(suino => {
@@ -150,6 +146,7 @@ export class PigListComponent implements OnInit {
 
     this.dataSource = new MatTableDataSource<ISuino>(this.filteredSuinos);
   }
+
 
 
 

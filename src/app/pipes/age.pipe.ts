@@ -1,4 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt);
+
 
 @Pipe({
   name: 'age'

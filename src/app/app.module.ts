@@ -1,4 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -8,9 +14,7 @@ import { PigFormComponent } from './components/pig-form/pig-form.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule, MatIconButton } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';;
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -31,10 +35,24 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { AutenticaInterceptor } from './components/authentication/autentica.interceptor';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PigDetailsComponent } from './components/pig-details/pig-details.component';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginator } from '@angular/material/paginator';
+import { DatePtBrPipe } from './pipes/date-pt-br.pipe';
+
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 
 const firebaseConfig = {
@@ -64,6 +82,7 @@ const app = initializeApp(firebaseConfig);
     LoadingSpinnerComponent,
     PageNotFoundComponent,
     PigDetailsComponent,
+    DatePtBrPipe
   ],
   imports: [
     BrowserModule,
@@ -88,9 +107,16 @@ const app = initializeApp(firebaseConfig);
     MatTooltipModule,
     MatProgressSpinnerModule,
     MatMomentDateModule,
-    MatDividerModule
+    MatDividerModule,
+    MatPaginator,
+
   ],
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }, // Locale para os componentes do DatePicker
+    { provide: LOCALE_ID, useValue: 'pt-BR' }, // Locale para datas em geral
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }, // Formatos personalizados
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }, // Opções para o adapter Moment
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS] }, // Adapter Moment
     { provide: HTTP_INTERCEPTORS, useClass: AutenticaInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

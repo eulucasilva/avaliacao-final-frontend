@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, map, tap } from 'rxjs';
+import { Observable, Subject, catchError, map, of, tap, toArray } from 'rxjs';
 import { ISuino } from '../models/pig';
 
 @Injectable({
@@ -71,7 +71,6 @@ export class PigService {
       })
     );
   }
-
 }
 
 

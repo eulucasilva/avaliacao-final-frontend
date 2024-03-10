@@ -31,3 +31,8 @@
 .small-placeholder::placeholder {
     font-size: 12px;
 }
+
+.mat-column-actions th {
+    text-align: center;
+    /* Centraliza o conteúdo do cabeçalho da coluna "Ações" */
+}

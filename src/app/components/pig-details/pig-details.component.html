@@ -1,4 +1,3 @@
-
 <h2>
   Suíno de brinco nº {{ data.pig.animalTag }}
 </h2>
@@ -12,14 +11,14 @@
   </div>
   <div class="details-item">
     <strong>Data de nascimento: </strong>
-    {{ data.pig.birthDate | date : "dd/MM/yyyy" }}
+    {{ formatDepartureDate(data.pig.birthDate) }}
   </div>
   <div class="details-item">
     <strong>Idade: </strong> {{ data.pig.birthDate | age }}
   </div>
   <div class="details-item">
     <strong>Data de saída: </strong>
-    {{ data.pig.departureDate | date : "dd/MM/yyyy" }}
+    {{ formatDepartureDate(data.pig.departureDate) }}
   </div>
   <div class="details-item">
     <strong>Status: </strong> {{ data.pig.status }}
@@ -29,5 +28,5 @@
   </div>
 </div>
 <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Fechar</button>
-  </mat-dialog-actions>
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

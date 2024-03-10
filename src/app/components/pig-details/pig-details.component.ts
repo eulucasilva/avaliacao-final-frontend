@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { PigService } from '../../services/pig.service';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ISuino } from '../../models/pig';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-pig-details',
@@ -14,9 +14,21 @@ export class PigDetailsComponent {
   pigIndex!: number;
 
 
-  constructor(private suinoService: PigService,
+  constructor(
     @Inject(MAT_DIALOG_DATA) public data: { pig: ISuino, pigIndex: number }) {
     this.pigData = data.pig;
     this.pigIndex = data.pigIndex;
+  }
+
+  formatDepartureDate(departureDate: string): string {
+    if (!departureDate) {
+      return '';
+    }
+
+    const departureDateLocal = new Date(departureDate);
+    const departureDateFormatted = new Date(departureDateLocal.getTime() + departureDateLocal.getTimezoneOffset() * 60000);
+
+    return departureDateFormatted.toLocaleDateString('pt-BR')
+
   }
 }

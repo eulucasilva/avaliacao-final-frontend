@@ -1,27 +1,49 @@
-# PigApp
+# SuinoTech
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+SuinoTech é uma aplicação Angular para gerenciamento de operações de criação de suínos. Ela oferece funcionalidades para registrar suínos, acompanhar seu histórico de peso e monitorar seu status.
 
-## Development server
+## Como começar
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para executar a aplicação localmente, siga estes passos:
 
-## Code scaffolding
+1. Clone este repositório.
+2. Execute `npm install` para instalar as dependências.
+3. Execute `ng serve` para iniciar o servidor de desenvolvimento. Navegue até `http://localhost:4200/`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A aplicação será recarregada automaticamente se você modificar qualquer um dos arquivos de origem.
 
-## Build
+## Funcionalidades
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Registro de Suínos
 
-## Running unit tests
+- Adicione novos suínos ao sistema, incluindo detalhes como brinco do animal, brinco do pai, brinco da mãe, data de nascimento, data de saída, status e sexo.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Acompanhamento do Histórico de Peso
 
-## Running end-to-end tests
+- Monitore o histórico de peso de cada suíno, exibindo datas e pesos em um formato de gráfico.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Monitoramento de Status
 
-## Further help
+- Acompanhe o status de cada suíno, incluindo se estão ativos, vendidos ou falecidos.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Desenvolvimento
+
+### Gerando Componentes
+
+- Execute `ng generate component component-name` para gerar um novo componente.
+
+### Construindo a Aplicação
+
+- Execute `ng build` para construir o projeto. Os artefatos de construção serão armazenados no diretório `dist/`.
+
+### Executando Testes
+
+- Execute `ng test` para executar os testes unitários via Karma.
+
+### Executando Testes End-to-End
+
+- Execute `ng e2e` para executar os testes end-to-end via uma plataforma de sua escolha.
+
+### Ajuda Adicional
+
+- Para obter mais ajuda sobre o Angular CLI, use `ng help` ou consulte a página [Angular CLI Overview and Command Reference](https://angular.io/cli).

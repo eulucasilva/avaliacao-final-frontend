@@ -2,16 +2,37 @@
     flex: 1 1 auto;
 }
 
-/* Adiciona espaçamento entre o título e o menu "Suinos" */
 .title {
-    margin-right: 30px;
+    margin-right: 10px;
 }
 
 .logo {
     width: 120px;
-    /* ajuste o tamanho conforme necessário */
     height: 60px;
-    /* ajuste o tamanho conforme necessário */
     margin-right: 10px;
-    /* ajuste o espaçamento à direita conforme necessário */
+}
+
+.mat-toolbar-row {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+    .logo {
+        display: none;
+        /* Oculta o logotipo em telas pequenas para economizar espaço */
+    }
+
+    .title {
+        flex: 1 1 auto;
+    }
+
+    .spacer {
+        flex: 0 0 auto;
+    }
+
+    button.mat-button {
+        padding: 0 5px;
+        font-size: 12px;
+    }
 }

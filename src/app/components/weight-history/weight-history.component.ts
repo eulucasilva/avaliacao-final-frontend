@@ -91,6 +91,10 @@ export class WeightHistoryComponent implements OnInit {
       return;
     }
 
+    this.weights.sort((a, b) => {
+      return new Date(a.weighingDate).getTime() - new Date(b.weighingDate).getTime();
+    });
+
     const labels = this.weights.map(weight => weight.weighingDate);
     const data = this.weights.map(weight => weight.weight);
 

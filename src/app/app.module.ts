@@ -41,6 +41,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginator } from '@angular/material/paginator';
 import { DatePtBrPipe } from './pipes/date-pt-br.pipe';
 import { WeightHistoryComponent } from './components/weight-history/weight-history.component';
+import { UserManualComponent } from './components/user-manual/user-manual.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -85,7 +87,8 @@ const app = initializeApp(firebaseConfig);
     PageNotFoundComponent,
     PigDetailsComponent,
     DatePtBrPipe,
-    WeightHistoryComponent
+    WeightHistoryComponent,
+    UserManualComponent
   ],
   imports: [
     BrowserModule,
@@ -117,6 +120,7 @@ const app = initializeApp(firebaseConfig);
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatExpansionModule
 
   ],
   providers: [

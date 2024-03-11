@@ -6,6 +6,7 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { authGuard } from './services/guards/auth.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { WeightHistoryComponent } from './components/weight-history/weight-history.component';
+import { UserManualComponent } from './components/user-manual/user-manual.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'suinos', component: PigListComponent, canActivate: [authGuard] },
   { path: 'pesos', component: PigWeightListComponent, canActivate: [authGuard] },
   { path: 'monitoramento', component: WeightHistoryComponent, canActivate: [authGuard] },
+  { path: 'manual', component: UserManualComponent, canActivate: [authGuard] },
   { path: 'login', component: AuthenticationComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

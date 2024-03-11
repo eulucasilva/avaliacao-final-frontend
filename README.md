@@ -26,6 +26,10 @@ A aplicação será recarregada automaticamente se você modificar qualquer um d
 
 - Acompanhe o status de cada suíno, incluindo se estão ativos, vendidos ou falecidos.
 
+## Hospedagem
+
+A aplicação está hospedada no Firebase e pode ser acessada através do seguinte link: [SuinoTech](https://porco-tech-a61d6.web.app/)
+
 ## Desenvolvimento
 
 ### Gerando Componentes

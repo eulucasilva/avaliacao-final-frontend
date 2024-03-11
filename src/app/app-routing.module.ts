@@ -5,12 +5,14 @@ import { PigWeightListComponent } from './components/pig-weight-list/pig-weight-
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { authGuard } from './services/guards/auth.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { WeightHistoryComponent } from './components/weight-history/weight-history.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/suinos', pathMatch: 'full', },
   { path: 'suinos', component: PigListComponent, canActivate: [authGuard] },
   { path: 'pesos', component: PigWeightListComponent, canActivate: [authGuard] },
+  { path: 'monitoramento', component: WeightHistoryComponent, canActivate: [authGuard] },
   { path: 'login', component: AuthenticationComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

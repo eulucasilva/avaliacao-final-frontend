@@ -31,7 +31,13 @@
         <input matInput [matDatepicker]="picker" formControlName="birthDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="pigForm.get('birthDate')?.hasError('invalidDate')">Data inválida</mat-error>
+        <mat-error *ngIf="pigForm.get('birthDate')?.hasError('invalidMonth')">Mês inválido</mat-error>
+        <mat-error *ngIf="pigForm.get('birthDate')?.hasError('invalidDay')">Dia inválido</mat-error>
+        <mat-error *ngIf="pigForm.get('birthDate')?.hasError('futureDate')">Data no futuro</mat-error>
+        <mat-error *ngIf="pigForm.get('birthDate')?.hasError('required')">Preencha uma data correta</mat-error>
       </mat-form-field>
+
     </div>
     <div class="form-group">
       <mat-form-field>
@@ -39,6 +45,11 @@
         <input matInput [matDatepicker]="picker2" formControlName="departureDate">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="pigForm.get('departureDate')?.hasError('invalidDate')">Data inválida</mat-error>
+        <mat-error *ngIf="pigForm.get('departureDate')?.hasError('invalidMonth')">Mês inválido</mat-error>
+        <mat-error *ngIf="pigForm.get('departureDate')?.hasError('invalidDay')">Dia inválido</mat-error>
+        <mat-error *ngIf="pigForm.get('departureDate')?.hasError('futureDate')">Data no futuro</mat-error>
+        <mat-error *ngIf="pigForm.get('departureDate')?.hasError('required')">Preencha uma data correta</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">

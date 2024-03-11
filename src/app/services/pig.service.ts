@@ -46,6 +46,20 @@ export class PigService {
     );
   }
 
+  getAllPigTags(): Observable<string[]> {
+    return this.http.get<any[]>(this.apiURL).pipe(
+      map((response) => {
+        const pigTags: string[] = [];
+        for (const key in response) {
+          if (response.hasOwnProperty(key)) {
+            pigTags.push(response[key].animalTag);
+          }
+        }
+        return pigTags;
+      })
+    );
+  }
+
 
   updatePig(id: string, pigData: ISuino): Observable<any> {
     return this.http.put<ISuino>(`${this.apiURL.replace('.json', '')}/${id}.json`, pigData).pipe(

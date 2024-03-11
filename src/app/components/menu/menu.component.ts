@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
   }
 
   private isValidRoute(): boolean {
-    const validRoutes = ['/', '/suinos', '/pesos'];
+    const validRoutes = ['/', '/suinos', '/pesos', '/monitoramento'];
     return validRoutes.includes(this.router.url);
   }
 

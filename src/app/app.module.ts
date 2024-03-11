@@ -40,6 +40,8 @@ import { PigDetailsComponent } from './components/pig-details/pig-details.compon
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginator } from '@angular/material/paginator';
 import { DatePtBrPipe } from './pipes/date-pt-br.pipe';
+import { WeightHistoryComponent } from './components/weight-history/weight-history.component';
+
 
 
 export const MY_FORMATS = {
@@ -82,7 +84,8 @@ const app = initializeApp(firebaseConfig);
     LoadingSpinnerComponent,
     PageNotFoundComponent,
     PigDetailsComponent,
-    DatePtBrPipe
+    DatePtBrPipe,
+    WeightHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -109,13 +112,18 @@ const app = initializeApp(firebaseConfig);
     MatMomentDateModule,
     MatDividerModule,
     MatPaginator,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
 
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }, // Locale para os componentes do DatePicker
-    { provide: LOCALE_ID, useValue: 'pt-BR' }, // Locale para datas em geral
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }, // Formatos personalizados
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }, // Opções para o adapter Moment
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } }, // Opções para o adapter Moment
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS] }, // Adapter Moment
     { provide: HTTP_INTERCEPTORS, useClass: AutenticaInterceptor, multi: true },
   ],

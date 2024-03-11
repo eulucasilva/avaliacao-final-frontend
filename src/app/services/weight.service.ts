@@ -72,4 +72,20 @@ export class WeightService {
       })
     );
   }
+
+  getWeightHistory(animalTag: string): Observable<IWeight[]> {
+    return this.http.get<{ [key: string]: IWeight }>(`${this.apiURL}?orderBy="animalTag"&equalTo="${animalTag}"`).pipe(
+      map(response => {
+        const weights: IWeight[] = [];
+        for (const key in response) {
+          if (response.hasOwnProperty(key)) {
+            weights.push({ ...response[key], id: key });
+          }
+        }
+        return weights;
+      })
+    );
+  }
+
+
 }

@@ -10,10 +10,10 @@ export class DatePtBrPipe implements PipeTransform {
       return '';
     }
 
-    const departureDateLocal = new Date(date);
-    const departureDateFormatted = new Date(departureDateLocal.getTime() + departureDateLocal.getTimezoneOffset() * 60000);
+    const dateLocal = new Date(date);
+    const dateFormatted = new Date(dateLocal.getTime() + dateLocal.getTimezoneOffset() * 60000);
 
-    return departureDateFormatted.toLocaleDateString('pt-BR');
+    return dateFormatted.toLocaleDateString('pt-BR');
   }
 
 }
